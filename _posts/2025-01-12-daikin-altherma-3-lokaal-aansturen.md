@@ -17,7 +17,7 @@ Zo startte mijn zoektocht naar een lokale aansturing van de warmtepomp.
 **Doelen**
 
 - De unit volledig lokaal aansturen en integreren in mijn domotica. Denk aan automatisch temperaturen aanpassen op vakantie, of de tank extra verwarmen. Ook zit dan alles in één user interface, in plaats van voor elk "smart" apparaat een eigen app te hebben.
-- Het mogelijk te maken om zelf thermostaat-logica te implementeren, om zo een aantal tekortkomingen van de unit op te lossen. Zie [een eigen thermostaat bouwen](/een-eigen-thermostaat-bouwen).
+- Het mogelijk te maken om zelf thermostaat-logica te implementeren, om zo een aantal tekortkomingen van de unit op te lossen. Zie [een eigen thermostaat bouwen](/2025/03/03/een-eigen-thermostaat-bouwen).
 - Het mogelijk te maken om energie te bufferen in de tapwater tank of de vloerverwarming, om zo mijn eigen verbruik van de zonnepanelen beter te benutten en het net te ontlasten.
 
 **Eisen**
@@ -91,7 +91,7 @@ Ook ondersteunde het een Modbus modus, waarin alle slimmigheid uitgeschakeld wor
 
 Na het bekijken van opties voor lokale aansturing, lijkt de Daikin Home Hub de beste keuze. Aangevuld met ESPAltherma voor het uitlezen van data dat de Home Hub niet kan leveren.
 
-Het idee is om een ESP32 met ESPHome te gebruiken om over Modbus RTU met de Daikin Home Hub te communiceren. De Daikin Home Hub zal dan enkel als modbus interface dienen om de Altherma 3 aan te sturen. Zie [Een eigen thermostaat bouwen](/een-eigen-thermostaat-bouwen) hoe dit verder ging.
+Het idee is om een ESP32 met ESPHome te gebruiken om over Modbus RTU met de Daikin Home Hub te communiceren. De Daikin Home Hub zal dan enkel als modbus interface dienen om de Altherma 3 aan te sturen. Zie [Een eigen thermostaat bouwen](/2025/03/03/een-eigen-thermostaat-bouwen) hoe dit verder ging.
 
 ## Aanschaffen Daikin Home Hub
 
@@ -109,4 +109,4 @@ Dit was een lang proces bij Daikin en verliep allerminst vlekkeloos. Na maanden 
 
 ## Eindelijk! En toen?
 
-Ik heb nu eindelijk op een officieel ondersteunde manier, volledig lokaal, via een open protocol controle over mijn warmtepomp en kan nu mijn eigen thermostaat bouwen! Zie [Een eigen thermostaat bouwen](/een-eigen-thermostaat-bouwen) waar ik verder in ga op hoe ik met ESPHome een eigen thermostaat bouwde en uiteindelijk die van Daikin verving en veel betere resultaten kreeg.
+Ik heb nu eindelijk op een officieel ondersteunde manier, volledig lokaal, via een open protocol controle over mijn warmtepomp en kan nu mijn eigen thermostaat bouwen! Zie [Een eigen thermostaat bouwen](/2025/03/03/een-eigen-thermostaat-bouwen) waar ik verder in ga op hoe ik met ESPHome een eigen thermostaat bouwde en uiteindelijk die van Daikin verving en veel betere resultaten kreeg.
