@@ -1,0 +1,37 @@
+main:
+  # - title: "Posts"
+  #   url: /posts/
+  # - title: "Categories"
+  #   url: /categories/
+  - title: "Home"
+    url: /
+  - title: "Posts"
+    url: /posts/
+  # - title: "Domotica setup"
+  #   url: /domotica_setup/introductie/
+  - title: "Over mij"
+    url: /over-mij/
+
+domotica_setup:
+  - title: "Domotica setup"
+    children:
+      - title: "Introductie"
+        url: /domotica_setup/introductie/
+      - title: "Beginselen"
+        url: /domotica_setup/beginselen/
+      - title: "Techniek"
+        url: /domotica_setup/techniek/
+  - title: "Beginselen"
+    children:
+      - title: "Lokale aansturing"
+        url: /domotica_setup/lokale-aansturing/
+      - title: "Schoonmoeder-proof"
+        url: /domotica_setup/schoonmoeder-proof/
+      - title: "Techniek"
+        url: /domotica_setup/techniek/
+  - title: "Techniek"
+    children:
+      - title: "Ethernet netwerk"
+        url: /domotica_setup/lokale-aansturing/
+      - title: "Zigbee netwerk"
+        url: /domotica_setup/zigbee-netwerk/
