@@ -18,11 +18,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: "Michiel Karnebeek"
+title: "Michiel over domotica"
+masthead_title: "Michiel"
+logo: "/assets/images/logo.png"
 subtitle: "over domotica"
 email: 
 description: >- # this means to ignore newlines until "baseurl:"
-  Ik schrijf hier voornamelijk over domotica, maar ook over andere tech onderwerpen.
+  
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.netk.nl" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: mkarnebeek
@@ -64,7 +66,7 @@ repository: "mkarnebeek/blog.netk.nl"
 author:
   name   : "Michiel Karnebeek"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Ik schrijf hier voornamelijk over domotica, maar ook over andere tech onderwerpen."
+  bio    : "Tech nerd en vader van 2 kinderen. Ik schrijf hier voornamelijk over domotica en soms over andere tech onderwerpen."
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
