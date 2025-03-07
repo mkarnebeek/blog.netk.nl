@@ -57,6 +57,8 @@ plugins:
 # minimal-mistakes config
 locale: "nl-NL"
 
+# giscus
+repository: "mkarnebeek/blog.netk.nl"
 
 author:
   name   : "Michiel Karnebeek"
@@ -121,9 +123,9 @@ collections:
 comments:
   provider: giscus
   giscus:
-    repo_id: "R_kgDONorU1w"
+    repo_id: "R_kgDOOE8-0g"
     category_name: "Announcements"
-    category_id: "DIC_kwDONorU184CngsA"
+    category_id: "DIC_kwDOOE8-0s4CnsTR"
     discussion_term: "pathname"
     reactions_enabled: "1"
     theme: "light"
