@@ -27,7 +27,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.netk.nl" # the base hostname & protocol for your site, e.g. http://example.com
-github_username: mkarnebeek
+# github_username: mkarnebeek
 
 # Build settings
 theme: minimal-mistakes-jekyll
@@ -68,15 +68,15 @@ author:
   avatar : "/assets/images/bio-photo.jpg"
   bio    : "Tech nerd en vader van 2 kinderen. Ik schrijf hier voornamelijk over domotica en soms over andere tech onderwerpen."
   links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/mkarnebeek"
+    - label: "Feed"
+      icon: "fas fa-fw fa-rss"
+      url: "https://blog.netk.nl/feed.xml"
 
 footer:
   links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/mkarnebeek"
+    # - label: "GitHub"
+    #   icon: "fab fa-fw fa-github"
+    #   url: "https://github.com/mkarnebeek"
 
 include:
   - _pages
