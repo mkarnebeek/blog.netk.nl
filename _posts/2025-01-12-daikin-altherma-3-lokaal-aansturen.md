@@ -2,6 +2,7 @@
 title: "Daikin Altherma 3 lokaal aansturen"
 tags: Daikin Warmtepomp Modbus
 excerpt: Ons huis wordt sinds februari 2023 verwarmd door een Daikin Altherma 3 warmtepomp. Dit is mijn zoektocht naar een lokale aansturing ervan.
+last_modified_at: 07-03-2025
 ---
 
 ![](/assets/images/daikin_altherma_3/units.png){: width="300" align="right"}

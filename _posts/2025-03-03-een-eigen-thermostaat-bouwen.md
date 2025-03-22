@@ -2,6 +2,7 @@
 title: "ESPHome thermostaat voor Daikin Altherma 3"
 tags: ESPHome Modbus Warmtepomp
 excerpt: Een beschrijving van hoe ik een ESPHome thermostaat heb gebouwd voor de Daikin Altherma 3 warmtepomp.
+last_modified_at: 07-03-2025
 ---
 
 In [een vorig artikel](/2025/daikin-altherma-3-lokaal-aansturen) keek ik naar welke manieren mijn warmtepomp lokaal aan te sturen is. Dit leverde een Modbus RTU interface op waarmee ik de gewenste functies van de warmtepomp kan aansturen. Ik dit artikel beschrijf ik hoe mijn eigen gebouwde thermostaat hiervan gebruik maakt, wat ik er mee probeer te bereiken en hoe dat werkt.

@@ -59,6 +59,8 @@ plugins:
 
 # minimal-mistakes config
 locale: "nl-NL"
+#date_format: "%B %Y"
+date_format: "%d-%m-%Y"
 
 # giscus
 repository: "mkarnebeek/blog.netk.nl"
@@ -94,8 +96,9 @@ defaults:
       layout: single
       classes: wide_post
       author_profile: false
-      read_time: false
+      read_time: true
       comments: true
+      show_date: true
       share: false
       toc: true
       toc_sticky: true
