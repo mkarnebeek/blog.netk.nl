@@ -4,7 +4,7 @@ tags: ESPHome Modbus Warmtepomp
 excerpt: Een beschrijving van hoe ik een ESPHome thermostaat heb gebouwd voor de Daikin Altherma 3 warmtepomp.
 ---
 
-In [een vorig artikel](/2025/01/12/daikin-altherma-3-lokaal-aansturen) keek ik naar welke manieren mijn warmtepomp lokaal aan te sturen is. Dit leverde een Modbus RTU interface op waarmee ik de gewenste functies van de warmtepomp kan aansturen. Ik dit artikel beschrijf ik hoe mijn eigen gebouwde thermostaat hiervan gebruik maakt, wat ik er mee probeer te bereiken en hoe dat werkt.
+In [een vorig artikel](/2025/daikin-altherma-3-lokaal-aansturen) keek ik naar welke manieren mijn warmtepomp lokaal aan te sturen is. Dit leverde een Modbus RTU interface op waarmee ik de gewenste functies van de warmtepomp kan aansturen. Ik dit artikel beschrijf ik hoe mijn eigen gebouwde thermostaat hiervan gebruik maakt, wat ik er mee probeer te bereiken en hoe dat werkt.
 
 Inmiddels hangt aan de woonkamer muur een AirGradient luchtkwaliteitsmeter welke als thermostaat fungeert, in plaats van de Madoka thermostaat die met de warmtepomp kwam.
  
@@ -101,7 +101,10 @@ graph TD;
 
 ## ESPHome
 
-Voor de firmware op de ESP32 heb ik ESPHome gebruikt, omdat dit al ondersteuning voor [modbus](https://esphome.io/components/modbus_controller.html) en thermostaat logica aan boord heeft en de verdere (optionele) communicatie met Home Assistant dan erg gemakkelijk is. Let wel op dat ESPHome de verbinding met Home Assistant of wifi verliest, hij by default periodiek zal herstarten. Het is handig dit langer in te stellen dan de standaard waarde. Zie ook [ESPHome documentatie: ESPHome intentionally reboots in specific situations](https://esphome.io/guides/faq.html#my-node-keeps-reconnecting-randomly) hierover.
+Voor de firmware op de ESP32 heb ik ESPHome gebruikt, omdat dit al ondersteuning voor [modbus](https://esphome.io/components/modbus_controller.html) en thermostaat logica aan boord heeft en de verdere (optionele) communicatie met Home Assistant dan erg gemakkelijk is. 
+
+Let wel op dat ESPHome de verbinding met Home Assistant of wifi verliest, hij by default periodiek zal herstarten. Het is handig dit langer in te stellen dan de standaard waarde. Zie ook [ESPHome documentatie: ESPHome intentionally reboots in specific situations](https://esphome.io/guides/faq.html#my-node-keeps-reconnecting-randomly) hierover.
+{: .notice--warning}
 
 ## Woonkamer temperatuur via BLE
 

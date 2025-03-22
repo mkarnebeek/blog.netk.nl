@@ -101,6 +101,7 @@ defaults:
       toc_sticky: true
       toc_label: "Inhoud"
       related: true
+      permalink: /:year/:title/
   # _pages
   - scope:
       path: "_pages"
