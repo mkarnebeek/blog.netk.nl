@@ -48,7 +48,7 @@ O.a. ESPAltherma maakt hier gebruik van (zie verder), of je kunt zelf wat klusse
 
 Het X10A poort is een intern poort op de binnenunit. Eigenlijk gebruik ik het poort liever niet, omdat je in staat bent interne ongedocumenteerde commando's naar de warmtepomp te sturen. Dit poort wordt ook gebruikt door Daikin engineers om bijvoorbeeld de firmware van de binnenunit te updaten (niet te verwarren met de user interface software op de binnenunit). Het is een actief protocol waarbij je dus een query voor informatie stuurt en een antwoord krijgt van de binnenunit.
 
-Praktisch het enige open source project dat hiervan gebruik maakt is [ESPAltherma](https://github.com/raomin/ESPAltherma). Aangezien dit aleen queries stuurt voor het opvragen van data, en geen instelingen aanpast of opdachten geeft, lijkt het enigzins veilig. Ook wordt dit al door veel mensen gebruikt. 
+Praktisch het enige open source project dat hiervan gebruik maakt is [ESPAltherma](https://github.com/raomin/ESPAltherma). Aangezien dit alleen queries stuurt voor het opvragen van data, en geen instelingen aanpast of opdrachten geeft, lijkt het enigzins veilig. Ook wordt dit al door veel mensen gebruikt. 
 
 ![](/assets/images/daikin_altherma_3/espaltherma.png)
 
@@ -62,7 +62,7 @@ Het wijzigen van instellingen gebreurt echter altijd handmatig op de unit zelf, 
 
 De P1P2 bus is een eigen bus van Daikin die zij al een aantal generaties van hun apparaten gebruiken om te communiceren tussen verschillende apparaten. Bij de warmtepompten wordt dit gebruikt tussen de thermostaat en de binnenunit (nope, geen OpenTherm dus). Dit is een 2-draads bus, welke je vrij kunt doorlussen tussen de verschillende apparaten. 
 
-![](/assets/images/daikin_altherma_3/thermostat.png){: width="200" .align-right } In mijn geval was er een Madoka-thermostaat als enige apparaat hierop aangesloten, deze trouwens ookwel de "Interface voor menselijk comfort" noemt :P.
+![](/assets/images/daikin_altherma_3/thermostat.png){: width="200" .align-right } In mijn geval was er een Madoka-thermostaat als enige apparaat hierop aangesloten, welke Daikin trouwens ookwel de "Interface voor menselijk comfort" noemt :P.
 
 Er bestaat een open source project dat dit protocol ge-reverse-engineered heeft. Voormalig P1P2Serial en nu [P1P2MQTT](https://github.com/Arnold-n/P1P2MQTT). Gezien echter dat er geen officiele publieke documentatie van Daikin is voor P1P2, durfte ik hiermee niet de warmtepomp aan te sturen. Als ik een meer door Daikin ondersteunde manier kan vinden, heeft dat wel mijn voorkeur.
 
