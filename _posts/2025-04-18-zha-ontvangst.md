@@ -6,7 +6,7 @@ excerpt: Stappen die ik doorlopen heb om mijn ZHA netwerk stabiliteit te verbete
 
 # Situatie
 
-Het ZHA netwerk had al een tijdje moeite met battery-powered nodes online te houden. ![Xiaomi presence sensor](/assets/images/zha/xiaomi-motion.webp){: .align-right width="100"} Vooral met de verschillende Xiaomi sensors. Deze staan er wel om bekend moeite te hebben met bepaalde routers. Ze hadden ook wel eens issues op het deCONZ netwerk, dus in eerste instantie leek het vooral aan die motion sensors te liggen.
+Het ZHA netwerk had al een tijdje moeite met battery-powered nodes online te houden. ![Xiaomi presence sensor](/assets/images/zha/xiaomi-motion.webp){: .align-right width="15%"} Vooral met de verschillende Xiaomi sensors. Deze staan er wel om bekend moeite te hebben met bepaalde routers. Ze hadden ook wel eens issues op het deCONZ netwerk, dus in eerste instantie leek het vooral aan die motion sensors te liggen.
 
 Ook zag ik al een tijdje de volgende log regel voorbij komen, maar deze verdween na verloop van tijd.
 
@@ -20,7 +20,7 @@ Intussen was ik al wel 2 jaar bezig om van deCONZ naar ZHA te migreren en eigenl
 
 Over het stabiel krijgen van een zigbee netwerk is meer dan genoeg geschreven op het internet. Een forum post die ik zelf heel nuttig vond was [deze van Hedda](https://community.home-assistant.io/t/zigbee-network-optimization-a-how-to-guide-for-avoiding-radio-frequency-interference-adding-zigbee-router-devices-repeaters-extenders-to-get-a-stable-zigbee-network-mesh-with-best-possible-range-and-coverage-by-fully-utilizing-zigbee-mesh-networking/515752). Daardoorheen lezende dacht ik alles al wel een keer geprobeerd te hebben. USB2 verleng-kabel iemand? Of het [channel overlap diagram tussen Zigbee en Wifi](https://www.metageek.com/training/resources/zigbee-wifi-coexistence/) van Metageek bijv? Wel is met de jaren [https://www.home-assistant.io/integrations/zha](https://www.home-assistant.io/integrations/zha) flink uitgebreid en bevat veel nuttige informatie. 
 
-![Zigbee channel overlap](/assets/images/zha/zigbee-channels.png){: .align-center width="80%"}
+![Zigbee channel overlap](/assets/images/zha/zigbee-channels.png){: .align-center width="90%"}
 
 De volgende stap zou een migratie naar Zigbee2MQTT overwegen zijn, en een rabbit-hole in de wereld van zigbee firmwares en chipsets. Daar had ik nog niet zo veel zin in. Sterker nog. De afgelopen jaren wil ik juist complexiteit reduceren. Denk bijvoorbeeld aan influxdb en grafana uitfaseren omdat het energie dashboard en statistieken opslag van Home Assistant zo veel verbeterd zijn. Dus als ik de keuze heb tussen deCONZ, ZHA en Zigbee2MQTT, dan heeft ZHA wel de voorkeur. 
 
