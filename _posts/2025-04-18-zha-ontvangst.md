@@ -6,9 +6,7 @@ excerpt: Stappen die ik doorlopen heb om mijn ZHA netwerk stabiliteit te verbete
 
 # Situatie
 
-![Xiaomi presence sensor](/assets/images/zha/xiaomi-motion.webp){: .align-right width="100"}
-
-Het ZHA netwerk had al een tijdje moeite met battery-powered nodes online te houden. Vooral met de verschillende Xiaomi sensors. Deze staan er wel om bekend moeite te hebben met bepaalde routers. Ze hadden ook wel eens issues op het deCONZ netwerk, dus in eerste instantie leek het vooral aan die motion sensors te liggen.
+Het ZHA netwerk had al een tijdje moeite met battery-powered nodes online te houden. ![Xiaomi presence sensor](/assets/images/zha/xiaomi-motion.webp){: .align-right width="100"} Vooral met de verschillende Xiaomi sensors. Deze staan er wel om bekend moeite te hebben met bepaalde routers. Ze hadden ook wel eens issues op het deCONZ netwerk, dus in eerste instantie leek het vooral aan die motion sensors te liggen.
 
 Ook zag ik al een tijdje de volgende log regel voorbij komen, maar deze verdween na verloop van tijd.
 
@@ -22,15 +20,13 @@ Intussen was ik al wel 2 jaar bezig om van deCONZ naar ZHA te migreren en eigenl
 
 Over het stabiel krijgen van een zigbee netwerk is meer dan genoeg geschreven op het internet. Een forum post die ik zelf heel nuttig vond was [deze van Hedda](https://community.home-assistant.io/t/zigbee-network-optimization-a-how-to-guide-for-avoiding-radio-frequency-interference-adding-zigbee-router-devices-repeaters-extenders-to-get-a-stable-zigbee-network-mesh-with-best-possible-range-and-coverage-by-fully-utilizing-zigbee-mesh-networking/515752). Daardoorheen lezende dacht ik alles al wel een keer geprobeerd te hebben. USB2 verleng-kabel iemand? Of het [channel overlap diagram tussen Zigbee en Wifi](https://www.metageek.com/training/resources/zigbee-wifi-coexistence/) van Metageek bijv? Wel is met de jaren [https://www.home-assistant.io/integrations/zha](https://www.home-assistant.io/integrations/zha) flink uitgebreid en bevat veel nuttige informatie. 
 
-![Zigbee channel overlap](/assets/images/zha/zigbee-channels.png){: .align-center width="600"}
+![Zigbee channel overlap](/assets/images/zha/zigbee-channels.png){: .align-center width="80%"}
 
 De volgende stap zou een migratie naar Zigbee2MQTT overwegen zijn, en een rabbit-hole in de wereld van zigbee firmwares en chipsets. Daar had ik nog niet zo veel zin in. Sterker nog. De afgelopen jaren wil ik juist complexiteit reduceren. Denk bijvoorbeeld aan influxdb en grafana uitfaseren omdat het energie dashboard en statistieken opslag van Home Assistant zo veel verbeterd zijn. Dus als ik de keuze heb tussen deCONZ, ZHA en Zigbee2MQTT, dan heeft ZHA wel de voorkeur. 
 
 # Coordinator verplaatsen
 
-![Diagnosiek downloaden](/assets/images/zha/diag.png){: .align-right width="250"}
-
-In ZHA kun je "Diagnosiek" downloaden. In de json die je dan krijgt, vind je een energy scan per zigbee kanaal. Dit werkt een stuk beter dan je eigen wifi en zigbee kanalen instellen zodat ze niet overlappen met behulp van bovenstaand overzicht. Immers, je hebt ook buren en andere stoorzenders. Zoals wel bleek uit mijn energy scan. Uiteraard al eens geprobeerd de USB stick hoger in de meterkast te hangen, zo ver mogelijk weg van andere apparatuur. Maar de meterkast bleef een probleem, dus het werd tijd om e.e.a. te verhuizen van de meterkast naar zolder.
+In ZHA kun je "Diagnosiek" downloaden. ![Diagnosiek downloaden](/assets/images/zha/diag.png){: .align-right width="350"} In de json die je dan krijgt, vind je een energy scan per zigbee kanaal. Dit werkt een stuk beter dan je eigen wifi en zigbee kanalen instellen zodat ze niet overlappen met behulp van bovenstaand overzicht. Immers, je hebt ook buren en andere stoorzenders. Zoals wel bleek uit mijn energy scan. Uiteraard al eens geprobeerd de USB stick hoger in de meterkast te hangen, zo ver mogelijk weg van andere apparatuur. Maar de meterkast bleef een probleem, dus het werd tijd om e.e.a. te verhuizen van de meterkast naar zolder.
 
 ```
     "energy_scan": {
@@ -47,9 +43,7 @@ In ZHA kun je "Diagnosiek" downloaden. In de json die je dan krijgt, vind je een
 
 De enige reden waarom mijn servertje in de meterkast moet staan, is omdat hij vast zit aan de P1 poort van de slimme meter. Daar zijn tegenwoordige ook ethernet oplossingen voor.
 
-Bijvoorbeeld [deze van Marcel Zuidwijk](https://www.zuidwijk.com/product/p1-reader-ethernet/). Die is 5 euro goedkoper dan de [ESPHome-based versie](https://www.zuidwijk.com/product/slimmelezer-wt32-eth01/) en achteraf had ik misschien ook voor die 2e moeten gaan. Die eerste bevat namelijk wat chinese software, en ik heb zelf wel een voorkeur voor open firmware. Hoe dan ook, hang 'm op een eigen VLAN die ik ook gebruik voor de chinese robot stofzuigers bijvoorbeeld, en het werkt ook goed genoeg :P.
-
-![](/assets/images/zha/p1lezer1.jpeg){: width="300" } ![](/assets/images/zha/p1lezer2.jpeg){: width="300" }
+Bijvoorbeeld [deze van Marcel Zuidwijk](https://www.zuidwijk.com/product/p1-reader-ethernet/). ![](/assets/images/zha/p1lezer.png){: .align-right width="40%" } Die is 5 euro goedkoper dan de [ESPHome-based versie](https://www.zuidwijk.com/product/slimmelezer-wt32-eth01/) en achteraf had ik misschien ook voor die 2e moeten gaan. Die eerste bevat namelijk wat chinese software, en ik heb zelf wel een voorkeur voor open firmware. Hoe dan ook, hang 'm op een eigen VLAN die ik ook gebruik voor de chinese robot stofzuigers bijvoorbeeld, en het werkt ook goed genoeg :P.
 
 Inmiddels draait de server op zolder, en ziet de energy scan er een stuk beter uit. Nog steeds functueren de waardes enorm, en is het mij nog niet direct duidelijk welk kanaal nu handig is om te selecteren.
 
@@ -89,21 +83,21 @@ In mijn omgeving leek het alsof Home Assistant, ZHA en/of the coordinator kortst
 
 Vervolgens kun je deze bijvoorbeeld weergeven in Grafana. Hiermee is goed te bepalen welk kanaal nummer goed werkt.
 
-![](/assets/images/zha/zha_energy_grafana.png){: .align-center width="600" }
+![](/assets/images/zha/zha_energy_grafana.png){: .align-center width="80%" }
 
 
 # Router toevoegen
 
 Ooh, maar ik heb genoeg routers... Toch? Elke netstroom-powered node werkt als versterking voor je Mesh. En toch is de ene router de andere niet. In het netwerkoverzicht in ZHA waren veel rode lijnen te zien. Vooral bij de [IKEA Trådfri ledstrip drivers](https://www.ikea.com/nl/nl/p/tradfri-driver-voor-draadloze-besturing-smart-grijs-60342656/) was dit het geval. 
 
-![](/assets/images/zha/smlight_snlzbbnlziets-06m.png){: .align-center width="400" }
+![](/assets/images/zha/smlight_snlzbbnlziets-06m.png){: .align-center width="50%" }
 
 Inmiddels is er een erg populair apparaat op de markt van SMLight, de [SLZB-06M](https://smlight.tech/product/slzb-06m/). Mijn voornaamste reden dit te gebruiken is de radio en antenne combinatie. Als [deze youtuber](https://www.youtube.com/watch?v=QckXMMxDF0k) er 80 meter mee kan overbruggen, moet het bij mij thuis toch ook goed werken?
 
 
 Daarnaast ben ik persoonlijk enorm fan van dit apparaat. Het kan gevoed worden door USB-C of POE, gefabriceerd in Oekraïne, kost maar 35 euro op Aliexpress en bevat zeer goede firmware (Home Assistant support out-of-the-box).
 
-![](/assets/images/zha/snlzbbnldinges_ui.png){: .align-center width="80%" }
+![](/assets/images/zha/snlzbbnldinges_ui.png){: .align-center width="90%" }
 
 Aan de hardware kant gebruikt het een ESP32, heeft eventueel support voor ESPHome als je dat wil, en de zigbee chip is dezelfde die in de Sky Connect / ZBT-1 gebruikt wordt (Silicon Labs ERF32MG21). Je kun je eigen firmware naar keuze flashen op de zigbee chip, of kiezen uit de laatste router of coordinator firmware van Silicon Labs. Zelfs Matter-over-thread support is er. Ook is het gemakkelijk migreren van de ZBT-1 naar de SLZB-06M. Het komt ook nog in een aantal andere variaties (zoals de SLZB-06, zonder de M dus) die een chipset (Texas Instruments CC2652P) bevat die goed ondersteund wordt in Zigbee2MQTT, maar sinds begin 2025 is de support voor de Silicon Labs chipset in Zigbee2MQTT van experimenteel naar officieel supported gepromoveerd.
 
