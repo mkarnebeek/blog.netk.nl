@@ -2,7 +2,7 @@
 title: "ESPHome thermostaat voor Daikin Altherma 3"
 tags: ESPHome Modbus Warmtepomp
 excerpt: Een beschrijving van hoe ik een ESPHome thermostaat heb gebouwd voor de Daikin Altherma 3 warmtepomp.
-last_modified_at: 07-03-2025
+last_modified_at: 19-04-2025
 ---
 
 In [een vorig artikel](/2025/daikin-altherma-3-lokaal-aansturen) keek ik naar welke manieren mijn warmtepomp lokaal aan te sturen is. Dit leverde een Modbus RTU interface op waarmee ik de gewenste functies van de warmtepomp kan aansturen. Ik dit artikel beschrijf ik hoe mijn eigen gebouwde thermostaat hiervan gebruik maakt, wat ik er mee probeer te bereiken en hoe dat werkt.
@@ -288,7 +288,7 @@ Ok, absolute waardes voor aanvoer temperatuur doorgeven is leuk, maar eigenlijk 
 - **DHW reheat ON/OFF**: Uitschakeling van de tank verwarming. Zie ook "In bedrijf" in het menu van de warmtepomp. Handig voor op vakantie.
 - **DHW booster mode ON/OFF**: Dit activeert de booster mode van de warmtepomp. Dit is een extra verwarming die de warmtepomp aan kan zetten om de tank sneller op temperatuur te krijgen. De termperatuur hiervoor heb ik op de warmtepomp ingesteld op 60 graden. Dit wordt de meest krachtige van de 2 krachtig-modussen.
 - **Weather dependent mode - Main LWT Heating setpoint offset**: Als de warmtepomp op stooklijn staat ingesteld voor ruimteverwarming (waarom zou je 'm op iets anders stellen?), dan kan je deze offset gebruiken om de stooklijn te manipuleren. Stel deze in op -1 om de stooklijn te verlagen met 1 graad. Dit gebruik ik om modulatie te implementeren. Er is ook een cooling, maar het stooklijk-bereik in temperatuur voor koelen is zo beperkt, en in de praktijk is het in de woonkamer altijd 2 graden ofzo hoger dan het koelen-setpoint, dat modulatie in de parktijk niets doet.
-- **Smart Grid operation mode**, **Power limit during Recommended on / buffering** en **General power limit**: Deze registers zijn voor het instellen van de maximale vermogen van de warmtepomp. Dit is handig voor het eigenverbruik van de zonnepanelen te optimaliseren en energie te bufferen in de vloerverwarming en tank. 
+- **Smart Grid operation mode**, **Power limit during Recommended on / buffering** en **General power limit**: Deze registers zijn voor het instellen van de maximale vermogen van de warmtepomp. Dit is handig voor het eigenverbruik van de zonnepanelen te optimaliseren en energie te bufferen in de vloerverwarming en tank. Let even op dat je in de warmtepomp "Ondersteuning voor Smart Grid" zet op "Modbus-besturing", anders negeeert de warmtepomp wat je hier opgeeft.
 
 ## Thermostaat logica
 
