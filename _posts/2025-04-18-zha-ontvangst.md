@@ -137,7 +137,7 @@ Die andere node blijkt een Innr E14 lampje te zijn... aan de andere kant van het
 
 Dit keer reageert mijn eerste SLZB-06M als router op het Rejoin request, en weet de sensor opnieuw het netwerk te joinen zonder een reset / re-pair! Dit help wel met het vinden van problematische routers!
 
-# Huidige situatie en volgende stappen.
+# Huidige situatie en volgende stappen
 
 Ik heb nu 2 SLZB-06M's in huis. Één als router, en de ander als sniffer. Op termijn wil ik de Sky Connect / ZBT-1  die nu als coordinator functioneert migreren naar een van dezen, omdat ze zoveel makkelijker te plaatsen zijn in huis met POE. Ook ga ik problematische routers vervangen door betere routers (die Inner lamp), omdat ik op dit moment denk dat dit de hoofd oorzaak is van sensors die zo af en toen verdwijnen. Daarnaast zijn er soms sensoren die door Home Assistant als onbeschikbaar gemarkeerd worden, maar het eigenlijk nog doen: Dit zijn vocht en motion-sensors die bij detectie prima Home Assistant bereiken en weer online worden.
 
