@@ -8,15 +8,15 @@ main:
   - title: "Posts"
     url: /posts/
   - title: "Domotica setup"
-    url: /domotica_setup/introductie/
-  - title: "Over mij"
-    url: /over-mij/
+    url: /domotica_setup/introduction/
+  - title: "About me"
+    url: /about-me/
 
 domotica_setup:
   - title: "Domotica setup"
     children:
-      - title: "Introductie"
-        url: /domotica_setup/introductie/
+      - title: "Introduction"
+        url: /domotica_setup/introduction/
   #     - title: "Beginselen"
   #       url: /domotica_setup/beginselen/
   #     - title: "Techniek"

@@ -1,6 +1,6 @@
 ---
-permalink: /over-mij/
-title: "Over mij"
+permalink: /about-me/
+title: "About me"
 ---
 
-Ik ben Michiel Karnebeek, vader van 2 kinderen en 39 jaar oud. Ik ben een software ontwikkelaar met een hobby voor domotica en andere tech onderwerpen.
+I am Michiel Karnebeek, father of 2 children and 39 years old. I am a software developer with a passion for home automation.

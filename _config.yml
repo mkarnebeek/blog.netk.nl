@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: "Michiel over domotica"
+title: "Michiel on Home Automation"
 masthead_title: "Michiel"
 logo: "/assets/images/logo.png"
-subtitle: "over domotica"
+subtitle: "on Home Automation"
 email: 
 description: >- # this means to ignore newlines until "baseurl:"
   
@@ -58,7 +58,7 @@ plugins:
 #   - vendor/ruby/
 
 # minimal-mistakes config
-locale: "nl-NL"
+locale: "en-US"
 #date_format: "%B %Y"
 date_format: "%d-%m-%Y"
 
@@ -68,17 +68,20 @@ repository: "mkarnebeek/blog.netk.nl"
 author:
   name   : "Michiel Karnebeek"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Tech nerd en vader van 2 kinderen. Ik schrijf hier voornamelijk over domotica en soms over andere tech onderwerpen."
+  bio    : "Tech nerd, software developer and father of 2 children. I mainly write about home automation and sometimes about other tech topics."
   links:
     - label: "Feed"
       icon: "fas fa-fw fa-rss"
       url: "https://blog.netk.nl/feed.xml"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.social/@mkarnebeek"
 
 footer:
   links:
-    # - label: "GitHub"
-    #   icon: "fab fa-fw fa-github"
-    #   url: "https://github.com/mkarnebeek"
+    - label: "Mastodon"
+      icon: "fab fa-fw fa-mastodon"
+      url: "https://mastodon.social/@mkarnebeek"
 
 include:
   - _pages
@@ -140,7 +143,7 @@ comments:
     discussion_term: "pathname"
     reactions_enabled: "1"
     theme: "light"
-    lang: "nl"
+    lang: "en"
 
 mermaid:
   src: "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"

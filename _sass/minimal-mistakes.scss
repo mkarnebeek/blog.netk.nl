@@ -3,6 +3,16 @@
     width: 100%;
 }
 
+.mermaid {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-popup img {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+}
+
 /* Copyright comment */
 @import "minimal-mistakes/copyright";
 
@@ -40,3 +50,11 @@
 @import "minimal-mistakes/archive";
 @import "minimal-mistakes/sidebar";
 @import "minimal-mistakes/print";
+
+
+div.highlighter-rouge {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
