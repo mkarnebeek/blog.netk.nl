@@ -45,7 +45,7 @@ So until I found an alternative, this was how I integrated it with my home autom
 
 These are contacts you can close or open potential-free, for example with a relay. ESPAltherma uses this (see below) among others, or you can tinker with ESPHome for example. 
 
-<div style="width: 40%;" markdown="1">
+<div style="width: 70%;" markdown="1">
 
 | Contact 1 | Contact 2 | Operation Mode |
 | --------- | --------- | -------------- |
