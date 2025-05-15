@@ -9,7 +9,12 @@ slimme_lezer_gallery:
   - url: /assets/images/zha/slimmelezer2.jpeg
     image_path: /assets/images/zha/slimmelezer2.jpeg
     title: ""
+last_modified_at: 15-05-2025
 ---
+
+# Changelog
+
+- May 2025: Disabled Source routing again, and enabled firmware updates for IKEA devices.
 
 # Situation
 
@@ -113,6 +118,9 @@ This device comes in several other variations, like the SLZB-06 (without the M) 
 
 # Enable Source Routing
 
+Update May 2025: I had to disable this again, as my Sonoff TRVZB TRV's spammed the logs quite a bit with `ZIGBEE_DELIVERY_FAILED: 3074` messages. Also, the positive effect of changing this setting is pretty hard to validate, so I disabled again for now.
+{: .notice--warning}
+
 ZHA uses something called Table Routing to determine routes in the network. This relies on router devices in your network to maintain a table of nodes they can see. Since it's generally known that not every manufacturer implements this the same way and some simply don't work well, it's basically asking for trouble. Combining old Hue lamps with Xiaomi battery-powered sensors? Guaranteed issues.
 
 The alternative is Source Routing (this is also used by default in Zigbee2MQTT). Here, the coordinator determines the route through the network. This also results in less broadcast traffic.
@@ -152,3 +160,16 @@ Nice, so this network sniffing is useful in finding problematic routers in the n
 I now have 2 SLZB-06Ms in my house. One as a router, and the other as a sniffer. Eventually I want to migrate the Sky Connect / ZBT-1 that currently functions as coordinator to one of these, because they're so much easier to place around the house with POE. I'm also going to replace problematic routers with better routers (that Innr lamp), because I currently think this is the main cause of sensors disappearing now and then. Additionally, there are sometimes sensors that Home Assistant marks as unavailable, but are actually still working: These are moisture and motion sensors that reach Home Assistant fine when detecting something and come back online. I'm not sure yet what to do with these.
 
 At this point however, I've learned something interesting, it works stable enough and there are clear diagnostic steps to take when problems occur. For now, this is a solved problem.
+
+# Update May 2025: OTA updates for IKEA devices
+
+I discovered that zigpy by default [doesn't have firmware updates enabled for a lot of device vendors](https://github.com/zigpy/zigpy/wiki/OTA-Configuration). Since I have a lot of IKEA devices acting as routers, I enabled updates for them. It takes a few days for ZHA then to recognize updates being available for individual devices. After a few days, almost all of my IKEA devices received and installed updates.
+
+```
+  zha:
+    zigpy_config:
+      ota:
+        extra_providers:
+          - type: ikea
+```
+
