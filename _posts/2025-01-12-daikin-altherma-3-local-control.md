@@ -45,7 +45,7 @@ So until I found an alternative, this was how I integrated it with my home autom
 
 These are contacts you can close or open potential-free, for example with a relay. ESPAltherma uses this (see below) among others, or you can tinker with ESPHome for example. 
 
-<div style="width: 40%;" markdown="1">
+<div style="width: 70%;" markdown="1">
 
 | Contact 1 | Contact 2 | Operation Mode |
 | --------- | --------- | -------------- |
@@ -99,7 +99,7 @@ Until Daikin introduced the Daikin Home Hub (EKRHH)!
 
 ### The P1P2 bus and the Daikin Home Hub
 
-Introduced late 2023, the Daikin Home hub is meant for optimizing self-consumption/production. It's mounted in the electrical cabinet and is connected to the heat pump's P1P2 bus. Via a2 USB port, a P1 cable can be connected to a smart meter, and that's all you need to use buffering in your underfloor heating or the hot water tank. Wow. Compared to what I'm used to from Daikin so far with IO boards for example, this is a futuristic product!
+Introduced late 2023, the Daikin Home hub is meant for optimizing self-consumption/production. It's mounted in the electrical cabinet and is connected to the heat pump's P1P2 bus. Via a USB port a P1 cable can be connected to a smart meter, and that's all you need to use buffering in your underfloor heating or the hot water tank. Wow. Compared to what I'm used to from Daikin so far with IO boards for example, this is a futuristic product!
 
 <div style="width: 80%;" markdown="1">
 [![](/assets/images/daikin_altherma_3/ekrhh.png){: width="49%" }](/assets/images/daikin_altherma_3/ekrhh.png)
