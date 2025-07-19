@@ -1,7 +1,7 @@
 ---
 title: "Improving ZHA network stability"
 tags: ZHA zigbee
-excerpt: An overview of my attempts to stabilize ZHA 
+excerpt: An overview of my attempts to stabilize ZHA, with a plot twist at the end
 slimme_lezer_gallery:
   - url: /assets/images/zha/slimmelezer1.jpeg
     image_path: /assets/images/zha/slimmelezer1.jpeg
@@ -15,7 +15,7 @@ last_modified_at: 19-07-2025
 # Changelog
 
 - May 2025: Enabled firmware updates for IKEA devices.
-- June 2025: ZHA network crashed. Migration to Zigbee2MQTT started.
+- June 2025: ZHA network crashed, and controller migration
 
 # Situation
 
