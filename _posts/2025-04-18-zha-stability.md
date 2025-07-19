@@ -1,7 +1,7 @@
 ---
 title: "Improving ZHA network stability"
 tags: ZHA zigbee
-excerpt: An overview of how I've improved my ZHA network stability
+excerpt: An overview of my attempts to stabilize ZHA 
 slimme_lezer_gallery:
   - url: /assets/images/zha/slimmelezer1.jpeg
     image_path: /assets/images/zha/slimmelezer1.jpeg
