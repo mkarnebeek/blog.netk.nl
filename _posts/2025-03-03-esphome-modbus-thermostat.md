@@ -6,8 +6,13 @@ tags:
  - Heat Pump
  - Thermostat
 excerpt: "Building an ESPHome thermostat to control the Daikin Altherma 3 heat pump via Modbus, with better temperature control, modulation, and smart features."
-last_modified_at: 19-04-2025
+last_modified_at: 20-10-2025
 ---
+# Changelog
+
+- October 2025: Replaced external component with esp32_ble_server
+
+# Introduction
 
 In [a previous article](/2025/daikin-altherma-3-local-control/) I looked at ways to control my heat pump locally. This resulted in a Modbus RTU interface through which I can control the desired functions of the heat pump. In this article I describe how my self-built thermostat makes use of this, what I'm trying to achieve with it and how it works.
 
@@ -21,7 +26,7 @@ By now, there's an AirGradient air quality monitor on the living room wall funct
 
 Yes, I still need to properly hide the power cable, but it's a nice device on the wall. Besides temperature, it can of course also measure air quality and has LEDs and a display for useful information, not just for air quality, but other notifications from Home Assistant can also be displayed here as notifications.
 
-## Goal
+# Goal
 
 It's super cool and educational to build something yourself, but having a list of reasons why you're doing this is very helpful to stay on track :P. After using the heat pump for over a year, I encountered the following problems that I'd like to solve.
 
@@ -38,16 +43,16 @@ Additionally, I'm missing the following features:
 - **Fireplace mode**: Normally when you light the fireplace, the thermostat will turn off the heating because it's warm enough in the living room. However, because we don't have zone control this means the rooms upstairs are also no longer heated, and thus cool down when we use the fireplace. I'd like to ignore the living room temperature and let it continue running on its heating curve (based on the outdoor temperature).
 - **More efficient disinfection run**: We regularly set the tank to 60 degrees ourselves to be able to shower long and take extensive baths. This is effectively a disinfection run if it stayed 60 degrees long enough, so I'd like to count it as such, so it doesn't unnecessarily decide to heat the tank to 60 degrees a day later for example.
 
-## Requirements
+# Requirements
 
 - A standalone system, independent of Home Assistant or the computer network functioning. Optimizations can depend on information from Home Assistant or the internet, but the basic functionality for heating the house must function robustly and independently.
 - Preferably as little self-built hardware as possible, using existing hardware and open source software as much as possible.
 - Possibilities to implement custom logic or adjust existing logic to my wishes. This is a hobby project after all :P.
 - Everything powered by mains power. No replacing batteries every year.
 
-## Implementation
+# Implementation
 
-### Modbus RTU control with an ESP32 microcontroller
+## Modbus RTU control with an ESP32 microcontroller
 
 Modbus RTU is a simple 2-wire interface (only the A+/B- connections are needed. GND is optional) that works directly between these 2 devices. By using a simple physical connection and a microcontroller, instead of creating a dependency on the computer network or Home Assistant, this can function independently.
 
@@ -70,13 +75,13 @@ graph LR;
     DHH -->|P1P2 bus| WP[Heat Pump]
 {% endmermaid %}
 
-### Measuring the living room temperature
+## Measuring the living room temperature
 
 I already had an AirGradient air quality meter in the living room, which I had already flashed with ESPHome and it has a display that can show some useful information. I'd like to reuse this as a thermostat instead of having another device in the living room. This can easily hang on the wall where the thermostat is now. Supplemented with some icons for heat demand and whether the hot water tank is being filled.
 
 [![](/assets/images/daikin_altherma_3/airgradient.png){: .align-center width="40%" }](/assets/images/daikin_altherma_3/airgradient.png)
 
-### Thermostat logic
+## Thermostat logic
 
 In theory I could combine these 2 devices, but since I prefer to use as little modifications or self-built hardware as possible, it's more convenient to connect them to each other. Since they both use an ESP32 and these have Bluetooth, this is very easy to do wirelessly with Bluetooth Low Energy! The thermostat wires in the wall are then only needed for power.
 
@@ -84,7 +89,7 @@ Now the question is, in which of the two ESP32s do we run the thermostat logic? 
 
 If the bluetooth connection with the AirGradient fails, the heating will still be able to function in a limited way, based only on the outdoor temperature measured by the outdoor unit.
 
-## Component overview
+# Component overview
 
 By now there are quite a few components, but the basis is still relatively simple.
 
@@ -109,31 +114,47 @@ graph TD;
     ESPAltherma -.->|MQTT over Wifi| HA    
 {% endmermaid %}
 
-## ESPHome
+# ESPHome
 
 For the firmware on the ESP32 I used ESPHome, because it already has support for [modbus](https://esphome.io/components/modbus_controller.html) and thermostat logic on board and the further (optional) communication with Home Assistant is then very easy.
 
 Note that if ESPHome loses connection with Home Assistant or wifi, it will by default restart periodically. It's not recommended to disable this, but you can set this to a higher value. See the ESPHome documentation: [ESPHome intentionally reboots in specific situations](https://esphome.io/guides/faq.html#my-node-keeps-reconnecting-randomly) about this.
 {: .notice--warning}
 
-## Living room temperature via BLE
+# Living room temperature via BLE
 
-Unfortunately ESPHome only has support for reading BLE sensors, and cannot act as a BLE sensor out-of-the-box. But, ofcourse, there is someone on the interwebs who [implement this as an external component](https://github.com/wifwucite/esphome-ble-controller). With some configuration I now have an AirGradient that also acts as a BLE sensor.
+Since [ESPHome 2025.2](https://new.esphome.io/changelog/2025.2.0/) it has native support for acting as [a BLE server](https://esphome.io/components/esp32_ble_server/). Confguring this, I now have an AirGradient that also acts as a BLE sensor.
+
+Previously, I used an [external component from wifwucite]((https://github.com/wifwucite/esphome-ble-controller)) for this, because ESPHome couldn't do that yet.
+{: .notice--warning}
 
 ```yaml
-external_components:
-  - source: github://wifwucite/esphome-ble-controller
-
-esp32_ble_controller:
-  security_mode: none # have fun...
-  maintenance: false # disable writable commands
-  services: # generate some random UUIDs for these
-    - service: "e3320996-230d-4c34-b014-2ae1b8d796d6"
+esp32_ble_server:
+  services:
+    - uuid: 8a8e4590-3b3f-4343-acea-d59fc70e04fd
+      advertise: false
       characteristics:
-        - characteristic: "f63b8964-d886-4e4e-96c4-5ec1370d8734"
-          exposes: temp
-        - characteristic: "bc2ce2d5-3305-4e29-b681-6b4f2870b7d0"
-          exposes: humidity
+        - id: temp_characteristic
+          uuid: ae879a07-2182-4ec1-926e-b4a214769421
+          read: true
+          notify: true
+          description: Temperature
+          value:
+            # There is probably a simpler way to do this magic, 
+            # but this works for me.
+            data: !lambda |-
+              float value = id(temp).state;
+              return bytebuffer::ByteBuffer::wrap(value).get_data();
+        - id: humidity_characteristic
+          uuid: ae879a07-2182-4ec1-926e-b4a214769422
+          read: true
+          notify: true
+          description: Humidity
+          value:
+            data: !lambda |-
+              float value = id(humidity).state;
+              return bytebuffer::ByteBuffer::wrap(value).get_data();
+
 ```
 
 Once you boot the AirGradient with this configuration, check the logs for the mac address. You'll need this later. Note that this is a different mac address than the wifi one, and often only differs in the last letter/digit.
@@ -199,7 +220,7 @@ The BLE connection is an active one. This has the advantage that the ESP32 knows
           ignore_out_of_range: true
 ```
 
-## Modbus connection
+# Modbus connection
 
 On [Daikin's website for the Home Hub](https://www.daikin.nl/nl_nl/installateurs/products/product.html/EKRHH.html), at the bottom of the page, you can find the "Installation manual for installers". This document contains several parameters for the Modbus RTU interface of the Daikin Home Hub.
 
@@ -228,7 +249,7 @@ modbus_controller:
     setup_priority: -10
     update_interval: 20s
 ```
-### Reading and writing registers
+## Reading and writing registers
 
 Now that we have a connection with the Daikin Home Hub, we can read and write registers. Modbus has several register types, but the Daikin Home Hub only uses 2:
 - **Holding Registers**: These can be read and written.
@@ -291,7 +312,7 @@ Once the ESPHome firmware is built and added to Home Assistant, it appears in Ho
 
 [![](/assets/images/daikin_altherma_3/ha-ui.png){: .align-center width="80%" }](/assets/images/daikin_altherma_3/ha-ui.png)
 
-### Useful registers
+## Useful registers
 
 Ok, passing absolute values for supply temperature is nice, but actually I want the heat pump to do the things it's good at. I'll just be adding logic to it. So registers for manipulating the heating curve instead of explicitly setting a value it are more interesting. Below is an overview of the registers I use, and for what I use them. Keep in mind that I disconnected the Daikin thermostat and the unit itself only has access to the outdoor temperature measured by the outdoor unit.
 
@@ -305,7 +326,7 @@ Ok, passing absolute values for supply temperature is nice, but actually I want 
   - There is also a cooling one, but since the curve set for that is so limited, and in practice the living room is always 2 degrees or so higher than the cooling setpoint, that modulation in practice does nothing.
 - **Smart Grid operation mode**, **Power limit during Recommended on / buffering** and **General power limit**: These registers are for setting the maximum power of the heat pump. This is useful for optimizing self-consumption of solar panels and buffering energy in the underfloor heating and tank. Just note that you need to set "Smart Grid support" to "Modbus control" in the heat pump, otherwise the heat pump ignores what you specify here.
 
-## Thermostat logic
+# Thermostat logic
 
 Ok, now for the thermostat logic. ESPHome has a [component](https://esphome.io/components/climate/thermostat.html) for this that you can configure to your liking.
 
@@ -369,7 +390,7 @@ Then it looks beautiful in Home Assistant:
 
 [![](/assets/images/daikin_altherma_3/ha_thermostat.png){: width="50%" .align-center }](/assets/images/daikin_altherma_3/ha_thermostat.png)
 
-## Tweaking and features
+# Tweaking and features
 
 This component has one caveat... If the living room temperature is within the deadband/overrun, and the microcontroller reboots, the thermostat will jump to "idle", even if it was previously "heating". The consequence is that the heat pump turns off during a microcontroller reboot until it reaches the bottom of the deadband again. Since we know the current status of the heat pump by reading a modbus register, we can work around this. However, the workaround is quite ugly... namely, temporarily increasing the thermostat setpoint to activate it, then setting it back again. :facepalm:
 
