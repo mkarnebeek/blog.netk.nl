@@ -125,7 +125,7 @@ Note that if ESPHome loses connection with Home Assistant or wifi, it will by de
 
 Since [ESPHome 2025.2](https://new.esphome.io/changelog/2025.2.0/) it has native support for acting as [a BLE server](https://esphome.io/components/esp32_ble_server/). Confguring this, I now have an AirGradient that also acts as a BLE sensor.
 
-Previously, I used an [external component from wifwucite]((https://github.com/wifwucite/esphome-ble-controller)) for this, because ESPHome couldn't do that yet.
+Previously, I used an [external component from wifwucite](https://github.com/wifwucite/esphome-ble-controller) for this, because ESPHome couldn't do that yet.
 {: .notice--warning}
 
 ```yaml
