@@ -40,7 +40,7 @@ The next step would be considering a migration to Zigbee2MQTT, which meant going
 
 In ZHA you can download "Diagnostics". [![Download diagnostics](/assets/images/zha/diag.png){: .align-right width="350"}](/assets/images/zha/diag.png) In the JSON you get, you'll find an energy scan per Zigbee channel. This works much better than setting your own WiFi and Zigbee channels to not overlap using the diagram above. After all, you also have neighbors and other sources of interference. As was evident from my energy scan. Of course, I had already tried putting the USB stick higher in the meter cabinet, as far away as possible from other equipment. But the meter cabinet remained a problem, so it was time to move things from the meter cabinet to the attic.
 
-```
+```json
     "energy_scan": {
       ...
       "20": 99.244260188723507,
@@ -75,8 +75,8 @@ With the following YAML configuration you create a REST sensor in Home Assistant
 In my environment it seemed like Home Assistant, ZHA and/or the coordinator briefly blocks when it collects the diagnostics. The following code does this every minute. While this runs it can therefore cause some delay on the network each time it retrieves the diagnostics.
 {: .notice--warning}
 
-```
-{% raw %}
+```yaml
+{%- raw -%}
   sensor:
     - platform: rest
       unique_id: zha_energy
@@ -128,7 +128,7 @@ The alternative is Source Routing (this is also used by default in Zigbee2MQTT).
 
 Cem Basoglu wrote a [fantastic article about this](https://meshstack.de/post/home-assistant/zigbee-table-routing-vs-source-routing-zha/), and enabling it is super simple. Also, little can go wrong. If the network doesn't stabilize after a few hours and re-pairing difficult sensors doesn't work, you just turn it off again.
 
-```
+```yaml
   zha:
     zigpy_config:
       source_routing: true
@@ -166,7 +166,7 @@ At this point, however, I've learned something interesting, it works stable enou
 
 I discovered that zigpy by default [doesn't have firmware updates enabled for a lot of device vendors](https://github.com/zigpy/zigpy/wiki/OTA-Configuration). Since I have a lot of IKEA devices acting as routers, I enabled updates for them. It then takes a few days for ZHA to recognize updates being available for individual devices. After a few days, almost all of my IKEA devices received and installed updates.
 
-```
+```yaml
   zha:
     zigpy_config:
       ota:
