@@ -1,7 +1,7 @@
 ---
 title: "Improving ZHA network stability"
 tags: ZHA zigbee
-excerpt: An overview of my attempts to stabilize ZHA, with a plot twist at the end
+excerpt: An overview of my attempts to stabilize ZHA
 slimme_lezer_gallery:
   - url: /assets/images/zha/slimmelezer1.jpeg
     image_path: /assets/images/zha/slimmelezer1.jpeg
@@ -9,13 +9,19 @@ slimme_lezer_gallery:
   - url: /assets/images/zha/slimmelezer2.jpeg
     image_path: /assets/images/zha/slimmelezer2.jpeg
     title: ""
-last_modified_at: 19-07-2025
+last_modified_at: 01-11-2025
 ---
+
+I no longer use Zigbee Home Automation (ZHA) in my setup, as I have migrated to Zigbee2MQTT. That network has now proven to be stable with 75+ devices. The most important takeaways are:
+- Use Zigbee 3.0 devices whenever possible.
+- Remove any older Xiaomi/Aqara devices from your network once they begin having issues.
+- Add more dedicated routers to your network, such as Sonoff ZBdongle-E Plus Zigbee 3.0 USB dongles flashed with router firmware.
 
 # Changelog
 
 - May 2025: Enabled firmware updates for IKEA devices.
 - June 2025: ZHA network crashed, and controller migration
+- Okt 2025: Deprecated article
 
 # Situation
 
