@@ -12,10 +12,15 @@ slimme_lezer_gallery:
 last_modified_at: 01-11-2025
 ---
 
-I no longer use Zigbee Home Automation (ZHA) in my setup, as I have migrated to Zigbee2MQTT. That network has now proven to be stable with 75+ devices. The most important takeaways are:
-- Use Zigbee 3.0 devices whenever possible.
-- Remove any older Xiaomi/Aqara devices from your network once they begin having issues.
-- Add more dedicated routers to your network, such as Sonoff ZBdongle-E Plus Zigbee 3.0 USB dongles flashed with router firmware.
+# Update: I've switched to Zigbee2MQTT
+
+First up: I no longer use Zigbee Home Automation (ZHA) in my setup, as I have migrated to Zigbee2MQTT. That network has now proven to be stable for me with 75+ devices. The most important takeaways are:
+
+ - Use Zigbee 3.0 devices whenever possible.
+ - Remove any older Xiaomi/Aqara devices from your network once they begin having issues.
+ - Add more dedicated routers to your network, such as Sonoff ZBdongle-E Plus Zigbee 3.0 USB dongles flashed with router firmware.
+
+ The blog post below is still useful though, so I've kept it.
 
 # Changelog
 
