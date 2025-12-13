@@ -6,6 +6,7 @@ tags:
  - over-the-top 
  - Home Assistant
 excerpt: A deep-dive into my over-engineered Home Assistant YAML setup and what perks it gives me
+last_modified_at: 13-12-2025
 ---
 
 # Introduction
