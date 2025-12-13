@@ -1,6 +1,10 @@
 ---
 title: "How to organize way too much YAML and why"
-tags: YAML configuration over-the-top
+tags: 
+ - YAML 
+ - configuration 
+ - over-the-top 
+ - Home Assistant
 excerpt: A deep-dive into my over-engineered Home Assistant YAML setup and what perks it gives me
 ---
 
