@@ -68,7 +68,7 @@ repository: "mkarnebeek/blog.netk.nl"
 author:
   name   : "Michiel Karnebeek"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "Tech nerd, software developer and father of 2 children. I mainly write about home automation and sometimes about other tech topics."
+  bio    : "Tech nerd, software developer and father of 2 children. I mainly write about home automation and sometimes other tech topics."
   links:
     - label: "Feed"
       icon: "fas fa-fw fa-rss"
