@@ -6,7 +6,7 @@ tags:
  - over-the-top 
  - Home Assistant
 excerpt: A deep-dive into my over-engineered Home Assistant YAML setup and what perks it gives me
-last_modified_at: 13-12-2025
+last_modified_at: 15-12-2025
 ---
 
 # Introduction
@@ -202,8 +202,9 @@ For example: You have a curtain in the living room, but also the upstairs hallwa
 global_outdoor_light:
   template:
     - sensor:
-        name: global_outdoor_light_level
         unique_id: global_outdoor_light_level
+        name: global_outdoor_light_level
+        default_entity_id: sensor.global_outdoor_light_level
         state: "{{ ... }}"
 {% endraw %}
 ```
@@ -216,7 +217,9 @@ This way, other `area`-packages easily check if the `sensor.global_outdoor_light
 {%- raw -%}
   template:
     - binary_sensor:
+        unique_id: global_outdoor_light_dusk_2m
         name: global_outdoor_light_dusk_2m
+        default_entity_id: binary_sensor.global_outdoor_light_dusk_2m
         availability: "{{ states('sensor.global_outdoor_light_level')|is_number }}"
         state: "{{ states('sensor.global_outdoor_light_level') < 30 }}"
         delay_off: { minutes: 2 }
@@ -400,15 +403,15 @@ mocking_solar_panels:
   
   template:
     - sensor:
-        - name: "SolarEdge AC Output Power"
-          unique_id: solaredge_ac_output_power
+        - unique_id: solaredge_ac_output_power
+          name: "SolarEdge AC Output Power"
           default_entity_id: sensor.solaredge_ac_output_power
           state: "{{ states('input_number.solaredge_ac_output_power') }}"
           device_class: power
           state_class: measurement
           unit_of_measurement: "W"
-        - name: "SolarEdge DC Voltage"
-          unique_id: solaredge_dc_voltage
+        - unique_id: solaredge_dc_voltage
+          name: "SolarEdge DC Voltage"
           default_entity_id: sensor.solaredge_dc_voltage
           state: "{{ states('input_number.solaredge_dc_voltage') }}"
           device_class: voltage
