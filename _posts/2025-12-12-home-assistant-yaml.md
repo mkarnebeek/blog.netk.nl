@@ -321,7 +321,7 @@ The only downside is that a single blueprint can only define a single automation
 
 ```yaml
 {%- raw -%}
-trigger:
+triggers:
   - platform: ...
     variables:
       user_triggered: true
@@ -330,10 +330,10 @@ trigger:
   ...
 variables:
   override_active: "{{ is_state('timer....', 'active') }}"
-condition:
+conditions:
   - "{{ condition if condition is defined else true }}"
   - "{{ user_triggered or (apply and not override_active) }}"
-action:
+actions:
   - action: scene.apply
     ...
   - if: "{{ activate_override }}"
@@ -363,7 +363,7 @@ sequence:
     response_variable: result
 
 # caller
-action:
+actions:
   - service: script.my_script
     data:
       some_input: "foo"
