@@ -88,7 +88,7 @@ The downside of this, however, is that you'll still end up with configuration sc
 
 ## Packages to the rescue!
 
-Packages do roughly the same as root-level `!include`s, but on a level higher.
+Packages do roughly the same as root-level `!include`s, but on a level higher... Did that make sense? A higher level than root-level? Right... On we go.
 
 > [Packages](https://www.home-assistant.io/docs/configuration/packages/) in Home Assistant provide a way to bundle configurations from multiple integrations.
 
