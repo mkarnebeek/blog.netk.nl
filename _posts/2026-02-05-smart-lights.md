@@ -18,7 +18,7 @@ The trust of your significant other (and the rest of the family) in your home au
 
 You do this by having a reliable and stable system which behaves predictably. For example, by not making functionality dependent on unneeded "higher layers", like an internet connection. Staying as local as possible for the functionality required ensures that stuff stays simple and reliable.
 
-[![](/assets/images/lights/ecodim.jpg){: .align-right width="30%" }](/assets/images/lights/ecodim.jpg) For lights, this can mean that it should still be controllable with whatever switch is on the wall, even if your home automation system is down. So, instead of a smart light bulb, you can choose traditional LED lights with a smart dimmer module you place in the installation box in the wall. These modules usually are either like a traditional dumb dimmers (as seen on the right), or are re-using the existing switch, but get hidden inside the installation box (see further below). They are always hardwired to the light and switch, and can optionally be controlled by a home automation system. This ensures that the user can control the light through the button on the wall, even if the home automation system or some network is down.
+[![](/assets/images/lights/ecodim.jpg){: .align-right width="30%" }](/assets/images/lights/ecodim.jpg) For lights, this can mean that it should still be controllable with whatever switch is on the wall, even if your home automation system is down. So, instead of a smart light bulb, you can choose traditional LED lights with a smart dimmer module you place in the installation box in the wall. These modules usually are either like traditional dumb dimmers (as seen on the right), or are re-using the existing switch, but get hidden inside the installation box (see further below). They are always hardwired to the light and switch, and can optionally be controlled by a home automation system. This ensures that the user can control the light through the button on the wall, even if the home automation system or some network is down.
 
 # Layers
 
@@ -26,16 +26,16 @@ Defining a few layers helps reason about what to solve where. I'd like to organi
 
 - **Function local**: This is the example from above, where a light always functions regardless of anything else. This doesn't need to be hardwired. It can also mean wirelessly associating a motion sensor directly to a dimmer using Zigbee bindings or Zwave associations. If you can take down whatever your controller is, and still have that light working, then it is valid for this category. Heck, even RFLink/433Mhz applies here.
 - **House local**: This is whatever centralized home automation system you have. Home Assistant, Homey, etc. This is where your fancy logic lives. It bases its decisions on information from anything in your house you can measure and **optionally** from the internet. Your home automation system should be able to function without internet.
-- **Remote / Internet**: Making anything inside your house dependent on something external to function is just plain stupid. A thermostat which depends on the internet for its schedule to work? That's just asking for trouble. Accessing your smart home remotely, sending you messages over Telegram, or fetching weather information from the internet are all fine, but are all considered optional from your House Local layer's perspective. 
+- **Remote / Internet**: Making anything inside your house dependent on something external to function is just plain stupid. A thermostat which depends on the internet for its schedule to work? That's just asking for trouble. Accessing your smart home remotely, sending you messages over Telegram, or fetching weather information from the internet are all fine, but are all considered optional from your House local layer's perspective.
 
 This article focuses on the first layer, specifically in the domain of lights. I'll probably write other articles in the future on the other layers.
 
-Fun fact: Philips Hue or IKEA doesn't fall in the first category, even though you might intuitively think it does. Ever tested if your lights are still controllable from the wireless dimmer buttons when you disconnect the power from the hub? Yep, your whole house becomes functionally dependent on that hub being there. You can of course bind the remotes directly to the light, but that greatly limits your options for scene selection, conditions, etc, and for me that no longer is a smart home. That's just lights with wireless remotes.
+Fun fact: Philips Hue or IKEA don't fall in the first category, even though you might intuitively think they do. Ever tested if your lights are still controllable from the wireless dimmer buttons when you disconnect the power from the hub? Yep, your whole house becomes functionally dependent on that hub being there. You can of course bind the remotes directly to the light, but that greatly limits your options for scene selection, conditions, etc., and for me that no longer is a smart home. That's just lights with wireless remotes.
 {: .notice--info}
 
 # Choosing between functional and decorative
 
-Technology available at the time required me to make a choice: Either a light was a functional light and was independent of the home automation system (but was controllable by it), or it was a smart light with fancy colors, but it would rely on a centralized system to function. And so I did. I categorized each light in the house:
+The technology available at the time required me to make a choice: Either a light was a functional light and was independent of the home automation system (but was controllable by it), or it was a smart light with fancy colors, but it would rely on a centralized system to function. And so I did. I categorized each light in the house:
 
 - **Functional** lights are lights you strictly need to have a room function. These were controlled by a smart dimmer in the installation box in the wall which is hardwired to the switch and the light. The most fancy thing the light could do is dimming.
 - **Decorative** lights are usually color-capable lights to make a room cozy or have other fancy functionality (follow the TV ambilight, sync with music, etc). You generally don't control these on an individual light level, but mostly through scenes. These are allowed to be non-functional when the house-layer is non-functional.
@@ -69,7 +69,7 @@ graph TD;
     HA <-.->|Zigbee/Wifi/...| LIGHT
 {% endmermaid %}
 
-The core of this is the smart relay module in the wall. Not only does it need to support detached relay mode, but it also needs to be able to switch to/from that mode based on if the home automation system or controller is available.
+The core of this is the smart relay module in the wall. Not only does it need to support detached relay mode, but it also needs to be able to switch to and from that mode based on if the home automation system or controller is available.
 
 It needs to be able to switch to and from detached relay mode **on its own**. Some smart relay modules support detached relay mode, but cannot enable/disable that feature based on if the controller or home automation system is up/down.
 
@@ -81,7 +81,7 @@ You'd lose functionality when the home automation system or controller is down, 
 
 # Choosing hardware
 
-Philips Hue smart lights are pretty affordable nowadays with their Essentials line. Alternatively IKEA now has a new Matter-capable line of lights. Avoid the current Tradfri-line of lights, as they have issues applying both brightness and a color in the same action. You can work around this, but it's no longer worth it seeing the Hue and IKEA developments. If you want to go open-source, go with for example WLED-based lights from Athom Tech (not to be mixed up with Athom, the company behind Homey)
+Philips Hue smart lights are pretty affordable nowadays with their Essentials line. Alternatively, IKEA now has a new Matter-capable line of lights. Avoid the current Tradfri-line of lights, as they have issues applying both brightness and a color in the same action. You can work around this, but it's no longer worth it seeing the Hue and IKEA developments. If you want to go open-source, go with for example WLED-based lights from Athom Tech (not to be mixed up with Athom, the company behind Homey).
 
 [![](/assets/images/lights/sonoff_minir4.png){: .align-right width="30%" }](/assets/images/lights/sonoff_minir4.png)
 For relays in the installation box, Sonoff has some really nice DIY-modules. I was already a fan of the MINI R2, but with the MINI R4, they made it even smaller, upgraded to the ESP32 microcontroller and they can now also function as bluetooth proxies for Home Assistant. Unfortunately [flashing them with ESPHome involves opening them up and some soldering](https://devices.esphome.io/devices/sonoff-minir4-extreme/). Not that hard, but annoying. So, depending on your preference, pick either the R2 or R4.
@@ -89,13 +89,13 @@ For relays in the installation box, Sonoff has some really nice DIY-modules. I w
 ESPHome by default [reboots every 15 minutes](https://esphome.io/guides/faq/#my-node-keeps-reconnecting-randomly) if it doesn't have a connection with Home Assistant. That will cause the light to be turned off if it's on. You can set that timer higher, but I still assume ESPHome will have a solution for this in the future.
 {: .notice--warning}
 
-Alternatively, avoiding both soldering and ESPHome: Sonoff also has the ZBMINIR4. This is the first zigbee module I've seen support conditional behavior like this. When it detects the zigbee controller being down, it can still control a light directly via zigbee bindings. Another option is Shelly, which allows scripting in their modules.
+Alternatively, to avoid both soldering and ESPHome: Sonoff also has the ZBMINIR4. This is the first zigbee module I've seen support conditional behavior like this. When it detects the zigbee controller being down, it can still control a light directly via zigbee bindings. Another option is Shelly, which allows scripting in their modules.
 
-I've not chosen the ZBMINIR4 for my setup because it lacks support for recognizing double clicks and long-presses of the attached button. Also, support for this is pretty new and has some quirks. For example, if you want it to control its relay instead of binding to a light, you bind it to itself over zigbee. This will probably become internally supported with a future software update, but it's a bit too obscure for my liking. If it ever gets deassociated, this is something I'll need to dive into again to fix. The same goes for Shelly: I can get it to work, but it's another scripting language to introduce, while I already have quite an extensive ESPHome setup.
+I haven't chosen the ZBMINIR4 for my setup because it lacks support for recognizing double clicks and long-presses of the attached button. Also, support for this is pretty new and has some quirks. For example, if you want it to control its relay instead of binding to a light, you bind it to itself over zigbee. This will probably become internally supported with a future software update, but it's a bit too obscure for my liking. If it ever gets deassociated, this is something I'll need to dive into again to fix. The same goes for Shelly: I can get it to work, but it's another scripting language to introduce, while I already have quite an extensive ESPHome setup.
 
 # ESPHome and Home Assistant setup
 
-This solution wouldn't be complete of course without a pile of YAML to go with it. So, now that we've finally gotten all of the introductions out of the way, here we go.
+This solution wouldn't be complete, of course, without a pile of YAML to go with it. So, now that we've finally gotten all of the introductions out of the way, here we go.
 
 ## ESPHome
 
@@ -172,7 +172,7 @@ binary_sensor:
 
 ## Home Assistant setup
 
-For Home Assistant, we're going with the classical toilet example. 
+For Home Assistant, we're going with the classic toilet example. 
 - An overhead light triggered by a motion sensor.
 - Button presses from our smart relay module also toggle the light.
 - Select correct scene to use depending on time of day or other conditions like house_status=sleeping.
