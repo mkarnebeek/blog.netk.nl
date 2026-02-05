@@ -1,5 +1,5 @@
 ---
-title: "How to organize way too much YAML and why"
+title: "Organizing way too much YAML and why"
 tags: 
  - YAML 
  - configuration 
