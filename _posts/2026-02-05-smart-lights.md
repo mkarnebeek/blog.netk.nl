@@ -2,6 +2,8 @@
 title: "Smart Lights: The proper way"
 tags: 
  - Home Assistant
+ - YAML
+ - ESPHome
 excerpt: How to combine fancy smart lights and reliability without compromises.
 modules_gallery:
   - url: /assets/images/lights/fibaro.png
