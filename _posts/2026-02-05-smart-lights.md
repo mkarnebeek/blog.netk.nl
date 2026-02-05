@@ -1,5 +1,5 @@
 ---
-title: "Setting up smart lights properly"
+title: "Smart Lights: The proper way"
 tags: 
  - Home Assistant
 excerpt: How to combine fancy smart lights and reliability without compromises.
@@ -14,11 +14,11 @@ modules_gallery:
 
 # Introduction
 
-The trust of your significant other (and the rest of the family) in your home automation system is very important. You need to keep them on board, so you can play with the next exotic new tech thing you think of. Taping over your existing switches with "Do not touch" is not done. Switches on your walls should do what is expected of them, or not be there. Remember, they become dependent on it in their day-to-day life, without having control over it.
+The trust of your significant other (and the rest of the family) in your home automation system is very important. Keep in mind that "your users" will become dependent on it in their day-to-day life, without having control over it. You need to keep them on board, so you can play with the next exotic tech thing you think of. Otherwise your hobby will be confined to just your mancave. Taping over your existing switches in the house with "Do not touch" is just asking for trouble. Switches on your walls should do what is expected of them, or not be there. 
 
-You do this by having a reliable and stable system which behaves predictably. For example, by not making functionality dependent on an internet connection. Staying as local as possible for the functionality required ensures that that functionality works reliably.
+You do this by having a reliable and stable system which behaves predictably. For example, by not making functionality dependent on unneeded "higher layers", like an internet connection. Staying as local as possible for the functionality required ensures that stuff stays simple and reliable.
 
-[![](/assets/images/lights/ecodim.jpg){: .align-right width="30%" }](/assets/images/lights/ecodim.jpg) For lights, instead of a smart light bulb, you can choose traditional LED lights with a smart dimmer module you place in the installation box in the wall. These modules usually are either like a traditional dumb dimmers (as seen on the right), or are re-using the existing switch, but get hidden inside the installation box (see further below). They are always hardwired to the light and switch, and can optionally be controlled by a central home automation system. This ensures that the user can control the light through the button on the wall, even if the central home automation system or some network is down.
+[![](/assets/images/lights/ecodim.jpg){: .align-right width="30%" }](/assets/images/lights/ecodim.jpg) For lights, this can mean that it should still be controllable with whatever switch is on the wall, even if your home automation system is down. So, instead of a smart light bulb, you can choose traditional LED lights with a smart dimmer module you place in the installation box in the wall. These modules usually are either like a traditional dumb dimmers (as seen on the right), or are re-using the existing switch, but get hidden inside the installation box (see further below). They are always hardwired to the light and switch, and can optionally be controlled by a home automation system. This ensures that the user can control the light through the button on the wall, even if the home automation system or some network is down.
 
 # Layers
 
@@ -77,7 +77,7 @@ It works like this:
 - When the home automation system is reachable, it functions in detached relay mode: When the push-button is pressed, it doesn't control the relay, but sends the button events to the home automation system, and lets it determine what to do. It won't toggle the relay, but instead tells the smart light what to do: turn on/off, walk through scenes, really dim during the night, etc.
 - When the home automation system is not reachable, button events toggle the onboard relay, toggling the power of the smart light bulb. Since that is set up to go to a specific color/brightness, it now just practically turns that light on and off. 
 
-You'd lose functionality when the central home automation system or controller is down, but it would still work. And I think this is very easily explained and understood by other users in your household: If the fancy home automation system works, you get fancy features. If not, you get basic functionality. In either case, it does what is expected of it.
+You'd lose functionality when the home automation system or controller is down, but it would still work. And I think this is very easily explained and understood by other users in your household: If the fancy home automation system works, you get fancy features. If not, you get basic functionality. In either case, it does what is expected of it.
 
 # Choosing hardware
 
@@ -85,6 +85,9 @@ Philips Hue smart lights are pretty affordable nowadays with their Essentials li
 
 [![](/assets/images/lights/sonoff_minir4.png){: .align-right width="30%" }](/assets/images/lights/sonoff_minir4.png)
 For relays in the installation box, Sonoff has some really nice DIY-modules. I was already a fan of the MINI R2, but with the MINI R4, they made it even smaller, upgraded to the ESP32 microcontroller and they can now also function as bluetooth proxies for Home Assistant. Unfortunately [flashing them with ESPHome involves opening them up and some soldering](https://devices.esphome.io/devices/sonoff-minir4-extreme/). Not that hard, but annoying. So, depending on your preference, pick either the R2 or R4.
+
+ESPHome by default [reboots every 15 minutes](https://esphome.io/guides/faq/#my-node-keeps-reconnecting-randomly) if it doesn't have a connection with Home Assistant. That will cause the light to be turned off if it's on. You can set that timer higher, but I still assume ESPHome will have a solution for this in the future.
+{: .notice--warning}
 
 Alternatively, avoiding both soldering and ESPHome: Sonoff also has the ZBMINIR4. This is the first zigbee module I've seen support conditional behavior like this. When it detects the zigbee controller being down, it can still control a light directly via zigbee bindings. Another option is Shelly, which allows scripting in their modules.
 
