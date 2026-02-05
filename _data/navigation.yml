@@ -7,8 +7,8 @@ main:
     url: /
   - title: "Posts"
     url: /posts/
-  - title: "Domotica setup"
-    url: /domotica_setup/introduction/
+  # - title: "Domotica setup"
+  #   url: /domotica_setup/introduction/
   - title: "About me"
     url: /about-me/
 
