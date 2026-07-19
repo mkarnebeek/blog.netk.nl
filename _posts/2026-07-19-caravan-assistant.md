@@ -211,7 +211,7 @@ Woaah, finally! Something useful :P. Having 4 people sleeping in a small space, 
 ## "Security"
 
 [![](/assets/images/caravan/motion.png){: .align-right width="20%" }](/assets/images/caravan/motion.png)
-Woohoo, I also have a motion sensor: a Sonoff SNZB-03P. Can you tell I'm a Sonoff fan yet? And that's about it. You could put window sensors everywhere but that doesn't look that nice, and is way overkill (Wait, is that an argument still here?).
+Woohoo, I also have a motion sensor: a Sonoff SNZB-03P (can you tell I'm a Sonoff fan yet?). And that's about it. You could put window sensors everywhere but that doesn't look that nice, and is way overkill (wait, is that an argument still here?).
 
 I also have a camera baby monitor lying around which I'm using sometimes when away, but it doesn't record. And even if it did, it would do that on its own SD card. The need for camera recordings though... I think this is fine for now.
 
@@ -219,7 +219,7 @@ I also have a camera baby monitor lying around which I'm using sometimes when aw
 
 Ok, so all of this has only been running for a few weeks now. And it still all works :P. So I have some ideas to extend it.
 
-I'm replacing the power supply of the caravan soon, because I want to have stable 12V DC. I'm also going to add power metering while working on it.
+I'm replacing the power supply of the caravan soon, because I want to have stable 12V DC. The current 20 year old power supply is just a FULL BRIDGE RECTIFIER (someone call Mehdi!) for the DC part, producing a sawline DC voltage somewhere around 12v. I'm also adding power metering while at it.
 
 I also want to monitor fresh water tank level (actually requested feature :P), because filling/checking it is a bit cumbersome now. And I'd like to have an eInk screen showing the CO2 levels of the night, current temperatures, power consumption, water level, etc.
 
