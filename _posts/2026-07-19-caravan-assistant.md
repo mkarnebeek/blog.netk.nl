@@ -8,7 +8,7 @@ excerpt: "Adding Home Automation to a 20-year old caravan, some networking bad p
 
 Soo... Our 20 year old caravan has Home Assistant now... Why, you ask? Because it can :). There were some actual goals I had. Only one of them slightly serious, but goals nonetheless:
 
-[![](/assets/images/caravan/intro.png){: .align-right width="40%" }](/assets/images/caravan/intro.png)
+[![](/assets/images/caravan/intro.jpg){: .align-right width="40%" }](/assets/images/caravan/intro.jpg)
 
 - Provide "internet like home" where all devices like an e-reader, phone, Nintendo Switch, etc. just connect to a WiFi network having the same SSID and password as home, and all the traffic gets sent back home over VPN. Also, I would access all internal services (hypervisors, NAS, ...) like I do when I'm home.
 - Provide some security against attempts to get into the caravan when we're away from it.
