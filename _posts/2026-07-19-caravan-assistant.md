@@ -225,4 +225,4 @@ I also want to monitor fresh water tank level (actually requested feature :P), b
 
 # Closing
 
-You've reached the end of another way too long article. Impressive. Thank you for reading along and I hope you enjoyed this article or that it was helpful to you in some way. Feel free to reach out to me directly or leave a comment. :wave:
+You've reached the end of another way too long article. Impressive. Thank you for reading along and I hope you enjoyed this article, or that it was helpful to you in some way. If you've been triggered by the bad networking practices, have suggestions for improvements, or just for whatever reason, feel free to reach out to me directly or leave a comment. :wave:
