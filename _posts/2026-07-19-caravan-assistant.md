@@ -213,11 +213,11 @@ Woaah, finally! Something useful :P. Having 4 people sleeping in a small space, 
 [![](/assets/images/caravan/motion.png){: .align-right width="20%" }](/assets/images/caravan/motion.png)
 Woohoo, I also have a motion sensor: a Sonoff SNZB-03P (can you tell I'm a Sonoff fan yet?). And that's about it. You could put window sensors everywhere but that doesn't look that nice, and is way overkill (wait, is that an argument still here?).
 
-I also have a camera baby monitor lying around which I'm using sometimes when away, but it doesn't record. And even if it did, it would do that on its own SD card. The need for camera recordings though... I think this is fine for now.
-
 I can enable a input_boolean when leaving the caravan, and when it senses motion, it will send me a message over the LoRa MeshCore network, and a push notification in the Home Assistant app.
 
 I'd like to automatically determine when we're at the caravan, without updating the "Home"-zone each time. I think that would work best by determining if the phone is connected to the caravan WiFi. That brings some difficulty on iOS though, as the Home Assistant app knowns the WiFi SSID it's connected, but not the IP address, so I'm unable to determine if the phone is connected to the WiFi at home, or the caravan.
+
+I also have a camera baby monitor lying around which I'm using sometimes when away, but it doesn't record. And even if it did, it would do that on its own SD card. The need for camera recordings though... I think this is fine for now.
 
 # Further ideas
 
