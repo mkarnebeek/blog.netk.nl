@@ -5,14 +5,14 @@ tags:
  - Ventilation
  - Shelly
  - CO2
-excerpt: "Adding stepless, CO2-driven mechanical extraction ventilation upstairs, controlled locally from Home Assistant via 0-10V."
+excerpt: "How I chose, installed, and automated a CO₂-controlled ventilation system for better air quality."
 ---
 
 # Introduction
 
 [![](/assets/images/mev/gevel.jpeg){: .align-right width="30%" }](/assets/images/mev/gevel.jpeg) We own a house from 1978, and last year we hired a contractor to renovate the upper-floor exterior of the house at the front and back side, including new windows. We also installed screens which completely block all light (and air, we found out later). Now we're no longer leaking expensive heat in the winter :P
 
-This did lead to a new challenge around air quality upstairs, especially during the night and in winter. With the new triple-glass windows and nice screens we would like to keep them closed to take maximum benefit from them. But with no mechanical ventilation system in place, the CO2 levels were at alarming levels. Even with the windows open and the screens closed, that hardly led to natural airflow anymore.
+This did lead to a new challenge around air quality upstairs, especially during the night and in winter. With the new triple-glass windows and nice screens we would like to keep them closed to take maximum benefit from them. But with no mechanical ventilation system in place, the CO₂ levels were at alarming levels. Even with the windows open and the screens closed, that hardly led to natural airflow anymore.
 
 # Requirements for a ventilation system
 
@@ -47,7 +47,7 @@ I picked extraction (type C), as the price compared to a full D system and the r
 
 Why not type B? I don't know. I don't see it being installed that often. It's often used in industrial settings, but not in houses. There aren't many residential products for type B to be found. I also think it makes more sense to extract air than to inject new air? Probably less turbulence and more predictable airflow.
 
-[![](/assets/images/mev/ventiel.png){: .align-right width="30%" }](/assets/images/mev/ventiel.png) I've placed the ventilation valves such that the fresh air from the window vents crosses the CO2-producing facility in the room (humans). Except for our bedroom. I wasn't able to place it optimally there, but as we see in the results later, that didn't matter that much fortunately.
+[![](/assets/images/mev/ventiel.png){: .align-right width="30%" }](/assets/images/mev/ventiel.png) I've placed the ventilation valves such that the fresh air from the window vents crosses the CO₂-producing facility in the room (humans). Except for our bedroom. I wasn't able to place it optimally there, but as we see in the results later, that didn't matter that much fortunately.
 
 With extraction only, and having a single window ventilation vent open in each room, I would be able to control both supply and extraction, as there is no air draft in a room when there is only one window ventilation vent open. That means I would only move the air when it's actually needed, at the rate that's needed, so that I keep most of the heat in. For me, this balanced the installation effort, heat loss of the ventilation system and air quality.
 
@@ -71,6 +71,12 @@ With extraction only, and having a single window ventilation vent open in each r
 
 Preferably, I'd like to power down the complete system when no ventilation is needed. Most ventilation boxes go into pairing mode for wireless remotes when you reconnect them to mains power. I didn't want that, because it could accidentally cause a neighbor's remote to be paired to my ventilation box. From what I could find, this specific box doesn't support remotes, so no pairing mode to worry about :)
 
+# CO₂ sensors
+
+[![](/assets/images/mev/sensor.png){: .align-right width="20%" }](/assets/images/mev/sensor.png) Not all CO₂ sensors are created equal. NDIR-based sensors are considered very accurate, but are also usually expensive. In the living room, I have an [AirGradient which uses a SenseAir S8 sensor](/2025/esphome-modbus-thermostat/). I like it a lot and it provides a lot of measurements! But it's way too expensive to put one in each bedroom. So, I've opted for the [ESPHome-based CO₂ sensor from Athom Tech](https://www.athom.tech/blank-1/co2-sensor), which is a VERY affordable, good sensor mounted on a PCB in a plastic case. It's as bare-bones as you can get while still calling it a product :). I like it!
+
+Later, the IKEA ALPSTUGA finally became available, and I got a chance to test it. The CO₂ readings from that are decent for getting a ballpark value, but for me, they're not accurate enough to run the ventilation on. I ended up [using them in the caravan](/2026/caravan-assistant/), because it is still a very nice sensor with plenty of other features, and at an even more awesome low price tag!
+
 # Controlling it
 
 [![](/assets/images/mev/connections.jpeg){: .align-right width="30%" }](/assets/images/mev/connections.jpeg) The box supports control via a 0-10V line, which is often used in office lighting. It works by sending an analog signal in the form of a voltage between 0-10V DC across two wires, by which you can tell the fan (stepless!) how fast to run. The 0-10V lines don't carry any load. The light fixture (or ventilation box in this case) has continuous mains power, and controls the intensity itself according to the signal received.
@@ -81,9 +87,9 @@ With plenty of room left in the ventilation box, you can easily fit a Shelly ins
 
 # Determining demand
 
-I already had CO2 sensors in every room. So, at any given time, pick the highest value of any of those sensors and based on a curve, determine the speed at which the fan must turn.
+I already had CO₂ sensors in every room. So, at any given time, pick the highest value of any of those sensors and based on a curve, determine the speed at which the fan must turn.
 
-Yes, this can in theory lead to oscillating behaviour, but even tuning this pretty aggressively (off at 600 ppm and 100% at 1200 ppm, and it has quite some air volume it can move at 100%), and no averaging of CO2 values over time yet, it didn't lead to oscillating behaviour yet. Even though it responds pretty quickly when you're with multiple people in a single room. I think this is because I placed the CO2 sensors out of the airflow in each room. It ends up with a natural averaging of the value in the room.
+Yes, this can in theory lead to oscillating behaviour, but even tuning this pretty aggressively (off at 600 ppm and 100% at 1200 ppm, and it has quite some air volume it can move at 100%), and no averaging of CO₂ values over time yet, it didn't lead to oscillating behaviour yet. Even though it responds pretty quickly when you're with multiple people in a single room. I think this is because I placed the CO₂ sensors out of the airflow in each room. It ends up with a natural averaging of the value in the room.
 
 # Code
 
@@ -120,7 +126,7 @@ template:
           data: { brightness_pct: "{{ percentage|int }}" }
 {% endraw %}
 ```
-Gather the maximum CO2 value from all CO2 sensors upstairs by utilising Home Assistant's floors and rooms feature!
+Gather the maximum CO₂ value from all CO₂ sensors upstairs by utilising Home Assistant's floors and rooms feature!
 
 ```yaml
 {%- raw -%}
@@ -218,11 +224,11 @@ automation:
 
 # Tuning
 
-[![](/assets/images/mev/config.png){: .align-right width="40%" }](/assets/images/mev/config.png) Once I had the system running and somewhat functioning, it was time to fine-tune it. I don't have a ventilation box per room, so I control 4 rooms with a single fan speed. One bedroom would have way lower CO2 values than the other, so I closed or opened the valves in each room as required, until the values are roughly equal.
+[![](/assets/images/mev/config.png){: .align-right width="40%" }](/assets/images/mev/config.png) Once I had the system running and somewhat functioning, it was time to fine-tune it. I don't have a ventilation box per room, so I control 4 rooms with a single fan speed. One bedroom would have way lower CO₂ values than the other, so I closed or opened the valves in each room as required, until the values are roughly equal.
 
 Also, running the fan at 100% would be very noticeable, but below a certain value, no longer. So I've set that value as the maximum it's allowed to run. I am considering applying that maximum only during the night, but I also haven't had a reason during the day yet to have it run faster than that.
 
-[![](/assets/images/mev/co2.png){: .align-right width="40%" }](/assets/images/mev/co2.png) Then, the aggressiveness of the curve. Setting the lower value of when to turn on too low leaves it running for most of the day, while that isn't needed. Setting the upper bound too high causes it to never properly get the CO2 values down. Setting that curve too aggressive can lead to oscillating behaviour.
+[![](/assets/images/mev/co2.png){: .align-right width="40%" }](/assets/images/mev/co2.png) Then, the aggressiveness of the curve. Setting the lower value of when to turn on too low leaves it running for most of the day, while that isn't needed. Setting the upper bound too high causes it to never properly get the CO₂ values down. Setting that curve too aggressive can lead to oscillating behaviour.
 
 [![](/assets/images/mev/fanspeed.png){: .align-right width="40%" }](/assets/images/mev/fanspeed.png) As you can see on the right, the fan speed graph is pretty aggressive, but I haven't noticed it yet, and I do like how fast it responds to high values. So no need to smooth that out yet by averaging it for example.
 
@@ -232,11 +238,11 @@ I also let the system run at 10% when the air conditioning unit in the hallway u
 
 [![](/assets/images/mev/bedroom.png){: .align-center width="90%" }](/assets/images/mev/bedroom.png)
 
-The graph here shows before and after activating the system beginning of May. It stays well below 1000 ppm and often below 900 ppm, which is really nice. Also, opening or closing the windows at night with the screens closed barely has any effect on the CO2 levels.
+The graph here shows before and after activating the system beginning of May. It stays well below 1000 ppm and often below 900 ppm, which is really nice. Also, opening or closing the windows at night with the screens closed barely has any effect on the CO₂ levels.
 
-Another cool effect of this was that it even helps with the CO2 downstairs. In the living room we don't have any ventilation and rely on natural airflow (System A if you'd like to call it that :P). Having visitors over or a birthday party often gets the CO2 to unhealthy levels, and a [display telling us about that](/2025/esphome-modbus-thermostat/) ends up with us opening doors or windows.
+Another cool effect of this was that it even helps with the CO₂ downstairs. In the living room we don't have any ventilation and rely on natural airflow (System A if you'd like to call it that :P). Having visitors over or a birthday party often gets the CO₂ to unhealthy levels, and a [display telling us about that](/2025/esphome-modbus-thermostat/) ends up with us opening doors or windows.
 
-We also have an air conditioning in the hallway upstairs, and we leave the hallway door downstairs open on really hot days. Recently, these combined: It was a very hot day at 39 degrees Celsius outside. The airco caused air circulation between downstairs and upstairs. This caused plenty of the CO2 to travel upstairs and exit the house, while cool air entered the living room. The effect was way lower CO2 levels in the living room than usual with this amount of people.
+We also have an air conditioning in the hallway upstairs, and we leave the hallway door downstairs open on really hot days. Recently, these combined: It was a very hot day at 39 degrees Celsius outside. The airco caused air circulation between downstairs and upstairs. This caused plenty of the CO₂ to travel upstairs and exit the house, while cool air entered the living room. The effect was way lower CO₂ levels in the living room than usual with this amount of people.
 
 # Closing
 
