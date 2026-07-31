@@ -5,7 +5,7 @@ tags:
  - Ventilation
  - Shelly
  - CO2
-excerpt: "How I chose, installed, and automated a CO₂-controlled ventilation system for better air quality."
+excerpt: "How I chose, installed, and automated a CO₂-controlled ventilation system for better air quality, the Home Automation way."
 ---
 
 # Introduction
