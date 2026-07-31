@@ -47,7 +47,7 @@ I picked extraction (type C), as the price compared to a full D system and the r
 
 Why not type B? I don't know. I don't see it being installed that often. It's often used in industrial settings, but not in houses. There aren't many residential products for type B to be found. I also think it makes more sense to extract air than to inject new air? Probably less turbulence and more predictable airflow.
 
-[![](/assets/images/mev/ventiel.png){: .align-right width="30%" }](/assets/images/mev/ventiel.png) I've placed the ventilation valves such that the fresh air from the window vents crosses the CO₂-producing facility in the room (humans). Except for our bedroom. I wasn't able to place it optimally there, but as we see in the results later, that didn't matter that much fortunately.
+[![](/assets/images/mev/ventiel.png){: .align-right width="30%" }](/assets/images/mev/ventiel.png) I've placed the ventilation valves such that the fresh air from the window vents crosses the CO₂-producion facility in each room. Except for our bedroom. I wasn't able to place it optimally there, but as we see in the results later, that didn't matter that much fortunately.
 
 With extraction only, and having a single window ventilation vent open in each room, I would be able to control both supply and extraction, as there is no air draft in a room when there is only one window ventilation vent open. That means I would only move the air when it's actually needed, at the rate that's needed, so that I keep most of the heat in. For me, this balanced the installation effort, heat loss of the ventilation system and air quality.
 
