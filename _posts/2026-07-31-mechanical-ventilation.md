@@ -10,7 +10,7 @@ excerpt: "How I chose, installed, and automated a CO₂-controlled ventilation s
 
 # Introduction
 
-[![](/assets/images/mev/gevel.jpeg){: .align-right width="30%" }](/assets/images/mev/gevel.jpeg) We own a house from 1978, and last year we hired a contractor to renovate the upper-floor exterior of the house at the front and back side, including new windows. We also installed screens which completely block all light (and air, we found out later). Now we're no longer leaking expensive heat in the winter :P
+[![](/assets/images/mev/gevel.jpeg){: .align-right width="35%" }](/assets/images/mev/gevel.jpeg) We own a house from 1978, and last year we hired a contractor to renovate the upper-floor exterior of the house at the front and back side, including new windows. We also installed screens which completely block all light (and air, we found out later). Now we're no longer leaking expensive heat in the winter :P
 
 This did lead to a new challenge around air quality upstairs, especially during the night and in winter. With the new triple-glass windows and nice screens we would like to keep them closed to take maximum benefit from them. But with no mechanical ventilation system in place, the CO₂ levels were at alarming levels. Even with the windows open and the screens closed, that hardly led to natural airflow anymore.
 
@@ -93,7 +93,7 @@ Yes, this can in theory lead to oscillating behaviour, but even tuning this pret
 
 # Code
 
-Finally! Some code.
+Finally! Some code :)
 
 The Shelly is represented in Home Assistant as a light, so let's first make it represent a fan properly.
 
