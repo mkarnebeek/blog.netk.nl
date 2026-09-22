@@ -13,7 +13,7 @@ excerpt: "The journey to developing ESPHome configuration for an awesome piece o
 
 The [Button+](https://button.plus/) is an awesome modular wall panel (go check out their website, it looks awesome!). A friend of mine and I bought one each, even though I don't have a use case for it yet. But you can be damn sure it's going somewhere on a wall here.
 
-It is a genuinely cool bit of hardware and we had a lot of fun fiddling with it. But I didn't like the stock firmware much though, and there wasn't a usable ESPHome configuration for it.
+It is a genuinely cool bit of hardware and we had a lot of fun fiddling with it. But I didn't like the stock firmware much, and there wasn't a usable ESPHome configuration for it.
 
 So with the help of Claude Code, I (ahem, Claude mostly) built [a config and open-sourced it](https://github.com/mkarnebeek/esphome-button-plus)! Heck, even half of this blog post is written by Claude and half by me. 
 
