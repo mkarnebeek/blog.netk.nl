@@ -4,7 +4,7 @@ gem "jekyll", "~> 4.4.1"
 gem "minimal-mistakes-jekyll"
 
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.17"
+  gem "jekyll-feed", "~> 0.18"
   gem "jekyll-include-cache"
   gem "jemoji"
 end
